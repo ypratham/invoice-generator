@@ -243,6 +243,52 @@ const InvoiceForm = () => {
                 />
                 <FormField
                   control={form.control}
+                  name="business.email"
+                  render={({ field }) => {
+                    return (
+                      <FormItem>
+                        <FormLabel>Email</FormLabel>
+                        <FormControl>
+                          <Input {...field} type="email" />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    );
+                  }}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="business.phoneNumber"
+                  render={({ field }) => {
+                    return (
+                      <FormItem>
+                        <FormLabel>Business phone number</FormLabel>
+                        <FormControl>
+                          <Textarea {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    );
+                  }}
+                />
+                <FormField
+                  control={form.control}
+                  name="business.zipCode"
+                  render={({ field }) => {
+                    return (
+                      <FormItem>
+                        <FormLabel>Zip code</FormLabel>
+                        <FormControl>
+                          <Textarea {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    );
+                  }}
+                />
+                <FormField
+                  control={form.control}
                   name="business.address"
                   render={({ field }) => {
                     return (
