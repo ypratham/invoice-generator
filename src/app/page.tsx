@@ -1,4 +1,6 @@
 import InvoiceForm from "@/components/InvoiceForm";
+import InvoiceWithThemes from "@/components/InvoiceWithTheme";
+import ThemeSwitch from "@/components/ThemeSwitch";
 import InvoiceThemeF from "@/components/theme/InvoiceThemeF";
 
 export default function Home() {
@@ -12,7 +14,7 @@ export default function Home() {
 
       <section className="flex  pb-12 items-start container justify-between">
         <InvoiceForm />
-        <InvoiceThemeF />
+        <InvoiceWithThemes />
       </section>
     </main>
   );
