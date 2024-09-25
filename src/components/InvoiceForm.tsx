@@ -5,7 +5,7 @@ import { TInvoiceSchema, invoiceSchema } from "@/types/formSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { addDays, format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 import { Button } from "./ui/button";
 import { Calendar } from "./ui/calendar";
@@ -28,9 +28,55 @@ import {
   SelectValue,
 } from "./ui/select";
 import { Textarea } from "./ui/textarea";
+import { ComboboxCountryInput } from "./ui/combobox";
+import PhoneInput, { Country } from "react-phone-number-input/input";
+import {
+  CountryCallingCode,
+  E164Number,
+  getExampleNumber,
+  parsePhoneNumber,
+} from "libphonenumber-js";
+import examples from "libphonenumber-js/mobile/examples";
+import {
+  getCountriesOptions,
+  isoToEmoji,
+  replaceNumbersWithZeros,
+} from "@/lib/helper";
+import i18nIsoCountries from "i18n-iso-countries";
+import enCountries from "i18n-iso-countries/langs/en.json";
+
+type CountryOption = {
+  value: Country;
+  label: string;
+  indicatif: CountryCallingCode;
+};
+
+i18nIsoCountries.registerLocale(enCountries);
 
 const InvoiceForm = () => {
   const updateState = useInvoiceStore((s) => s.updateState);
+
+  const options = getCountriesOptions();
+
+  // You can use a the country of the phone number to set the default country
+  const defaultCountry = parsePhoneNumber("+33606060606")?.country;
+  const defaultCountryOption = options.find(
+    (option) => option.value === defaultCountry
+  );
+
+  const [country, setCountry] = useState<CountryOption>(
+    defaultCountryOption || options[0]!
+  );
+  const [phoneNumber, setPhoneNumber] = useState<E164Number>();
+
+  const placeholder = replaceNumbersWithZeros(
+    getExampleNumber(country.value, examples)!.formatInternational()
+  );
+
+  const onCountryChange = (value: CountryOption) => {
+    setPhoneNumber(undefined);
+    setCountry(value);
+  };
 
   const form = useForm<TInvoiceSchema>({
     resolver: zodResolver(invoiceSchema),
@@ -53,7 +99,7 @@ const InvoiceForm = () => {
   }, [data]);
 
   return (
-    <Card className="col-span-5">
+    <Card className="w-1/2">
       <CardHeader>
         <CardTitle>Details</CardTitle>
       </CardHeader>
@@ -264,9 +310,32 @@ const InvoiceForm = () => {
                     return (
                       <FormItem>
                         <FormLabel>Business phone number</FormLabel>
-                        <FormControl>
-                          <Textarea {...field} />
-                        </FormControl>
+                        <div className="flex gap-1">
+                          <ComboboxCountryInput
+                            value={country}
+                            onValueChange={onCountryChange}
+                            options={options}
+                            placeholder="Find your country..."
+                            renderOption={({ option }) =>
+                              `${isoToEmoji(option.value)} ${option.label}`
+                            }
+                            renderValue={(option) => option.label}
+                            emptyMessage="No country found."
+                          />
+                          <PhoneInput
+                            international
+                            withCountryCallingCode
+                            country={country.value.toUpperCase() as Country}
+                            value={phoneNumber}
+                            inputComponent={Input}
+                            placeholder={placeholder}
+                            onChange={(value) => {
+                              setPhoneNumber(value);
+                              field.onChange(value);
+                            }}
+                          />
+                        </div>
+
                         <FormMessage />
                       </FormItem>
                     );
@@ -280,7 +349,7 @@ const InvoiceForm = () => {
                       <FormItem>
                         <FormLabel>Zip code</FormLabel>
                         <FormControl>
-                          <Textarea {...field} />
+                          <Input {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>

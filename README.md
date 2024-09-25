@@ -16,7 +16,7 @@ Invoice Generator is an open-source web application that allows users to create,
 ## Technologies Used
 
 - **Frontend**: [Next.js](https://nextjs.org/)
-- **Package Manager**: [Bun](https://bun.sh/)
+- **Package Manager**: [PnpM](https://pnpm.io/)
 - **UI Library**: [shadcn](https://ui.shadcn.dev/) for highly reusable components.
 - **State Management**: [Zustand](https://zustand-demo.pmnd.rs/) for managing application state.
 - **Forms**: [React Hook Form](https://react-hook-form.com/) for forms.
@@ -31,7 +31,7 @@ Follow the steps below to get the project running on your local machine:
 
 Ensure you have the following installed:
 
-- [Bun](https://bun.sh/) - The ultra-fast JavaScript runtime and package manager.
+- [PnpM](https://pnpm.io/) - Fast, disk space efficient package manager
 - Node.js (if Bun isn't installed, it can act as an alternative for certain features)
 
 ### Installation
