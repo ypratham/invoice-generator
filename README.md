@@ -11,6 +11,7 @@ Invoice Generator is an open-source web application that allows users to create,
 - **Responsive Design**: Fully responsive and works on all devices.
 - **UI Components**: Built using the **shadcn** component library for consistent and polished UI.
 - **State Management**: Uses **Zustand** to manage global application state efficiently.
+- **Forms**: Uses **React Hook form** to manage the forms efficiently.
 
 ## Technologies Used
 
@@ -18,6 +19,7 @@ Invoice Generator is an open-source web application that allows users to create,
 - **Package Manager**: [Bun](https://bun.sh/)
 - **UI Library**: [shadcn](https://ui.shadcn.dev/) for highly reusable components.
 - **State Management**: [Zustand](https://zustand-demo.pmnd.rs/) for managing application state.
+- **Forms**: [React Hook Form](https://react-hook-form.com/) for forms.
 - **Styling**: Tailwind CSS for modern and responsive designs.
 - **PDF Generation**: ReactPDF for PDF Generation
 
