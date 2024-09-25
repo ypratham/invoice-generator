@@ -15,7 +15,12 @@ const Navbar = () => {
 
         <li>
           <Button variant={"link"} asChild>
-            <Link href={"/"}>Contribute</Link>
+            <Link
+              href={"https://github.com/ypratham/invoice-generator"}
+              target="_blank"
+            >
+              Contribute
+            </Link>
           </Button>
         </li>
 
