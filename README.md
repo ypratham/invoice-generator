@@ -42,14 +42,14 @@ Ensure you have the following installed:
    cd invoice-generator
    ```
 
-2. **Install dependencies using Bun**:
+2. **Install dependencies using PnpM**:
    ```bash
-   bun install
+   pnpm install
    ```
 
 3. **Run the development server**:
    ```bash
-   bun run dev
+   pnpm dev
    ```
 
 4. **Open the app**: 
@@ -60,7 +60,7 @@ Ensure you have the following installed:
 To build the project for production, run:
 
 ```bash
-bun run build
+pnpm run build
 ```
 
 This will create an optimized production build of your application.
@@ -70,7 +70,7 @@ This will create an optimized production build of your application.
 After building the app, start the server in production mode:
 
 ```bash
-bun run start
+pnpm run start
 ```
 
 ## Contributing
