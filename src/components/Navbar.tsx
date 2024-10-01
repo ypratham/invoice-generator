@@ -3,7 +3,7 @@ import { Button } from "./ui/button";
 
 const Navbar = () => {
   return (
-    <nav className="h-16 p-6 border-b-2 flex items-center justify-between backdrop-blur-md">
+    <nav className="h-16 p-6 border-b-2 flex items-center justify-between backdrop-blur-md bg-white bg-opacity-50 sticky top-0 z-10">
       <h1 className="font-bold text-xl">Invoice</h1>
 
       <ul className="flex items-center justify-center gap-6">
