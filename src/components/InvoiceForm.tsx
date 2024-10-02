@@ -44,6 +44,8 @@ import {
 } from "@/lib/helper";
 import i18nIsoCountries from "i18n-iso-countries";
 import enCountries from "i18n-iso-countries/langs/en.json";
+import { useCallback } from 'react';
+
 
 type CountryOption = {
   value: Country;
@@ -73,10 +75,10 @@ const InvoiceForm = () => {
     getExampleNumber(country.value, examples)!.formatInternational()
   );
 
-  const onCountryChange = (value: CountryOption) => {
+  const onCountryChange = useCallback((value: CountryOption) => {
     setPhoneNumber(undefined);
     setCountry(value);
-  };
+  },[setPhoneNumber, setCountry]);
 
   const form = useForm<TInvoiceSchema>({
     resolver: zodResolver(invoiceSchema),
