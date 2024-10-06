@@ -139,6 +139,9 @@ const InvoiceForm = () => {
                           selected={field.value}
                           onSelect={field.onChange}
                           initialFocus
+                          disabled={(date: any) =>
+                            date > new Date() || date < new Date("1900-01-01")
+                          }
                         />
                       </PopoverContent>
                     </Popover>
@@ -202,9 +205,6 @@ const InvoiceForm = () => {
                             mode="single"
                             selected={field.value}
                             onSelect={field.onChange}
-                            disabled={(date: any) =>
-                              date > new Date() || date < new Date("1900-01-01")
-                            }
                             initialFocus
                           />
                         </div>
