@@ -12,8 +12,11 @@ import { Button } from "./ui/button";
 import InvoiceThemeFirst from "./theme/InvoiceThemeFirst";
 import InvoiceThemeSecond from "./theme/InvoiceThemeSecond";
 import InvoiceThemeThird from "./theme/ThemeThird";
+
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+import SpotifyInvoiceTheme from "./theme/InvoiceSpotify";
+
 
 const InvoiceWithThemes = () => {
   const [currentTheme, setCurrentTheme] = useState("theme1");
@@ -28,6 +31,8 @@ const InvoiceWithThemes = () => {
         return <InvoiceThemeSecond data={data} />;
       case "theme3":
         return <InvoiceThemeThird data={data} />;
+      case "theme4":
+        return <SpotifyInvoiceTheme data={data} />;
       default:
         return <InvoiceThemeFirst data={data} />;
     }
@@ -62,6 +67,7 @@ const InvoiceWithThemes = () => {
             <SelectItem value="theme1">Default Theme</SelectItem>
             <SelectItem value="theme2">Modern Theme</SelectItem>
             <SelectItem value="theme3">Colored Theme</SelectItem>
+            <SelectItem value="theme4">Spotify Theme</SelectItem>
           </SelectContent>
         </Select>
         <Button onClick={downloadPDF}>Download PDF</Button>
